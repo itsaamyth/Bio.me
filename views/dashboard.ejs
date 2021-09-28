@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bio.Me</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../public/stylesheets/style.css"
+    />
+  </head>
+  <body>
+    <nav
+      style="background-color: white"
+      class="navbar navbar-expand-lg navbar-light bg-light"
+    >
+      <a class="navbar-brand" style="font-weight: bold" href="#">Bio.me</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div id="logoutbtn">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          </ul>
+          </div>
+        <div class="mx-auto" id="copyBtn" >
+          <a class="navbar-brand mx-0" href="#"
+            ><h5 id="copy" style="color: #1b6abe">
+              <% if(loginUser != ''){ %> bio.me/<%= loginUser %> <% } %>
+            </h5></a
+          >
+          <button
+            class="btn"
+            data-clipboard-target="#copy"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="Tooltip on top"
+          >
+            <img
+              style="height: 25px; width: 25px"
+              src="../public/images/copy.png"
+            />
+          </button>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <!-- <form class="form-inline my-2 my-lg-0"> -->
+        <div class="btn-group dropleft" id="dropmenu">
+          <div class="dropdown">
+            <a href="#" id="imageDropdown" data-toggle="dropdown">
+              <img
+                src="https://img.icons8.com/ios/40/000000/user-male-circle.png"
+              />
+            </a>
+            <div
+              class="dropdown-menu"
+              style="right: 0; left: auto"
+              aria-labelledby="imageDropdown"
+            >
+              <a class="dropdown-item" href="/logout">Logout</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- </form> -->
+      </div>
+    </nav>
+    <div id="mobCopy">
+      <a class="navbar-brand mx-0" href="#"
+        ><h5 id="copy2">
+          <% if(loginUser != ''){ %> bio.me/<%= loginUser %> <% } %>
+      <button
+        class="btn"
+        data-clipboard-target="#copy2"
+        data-toggle="tooltip"
+        data-placement="top"
+        title="Tooltip on top"
+      >
+        <img
+          style="height: 25px; width: 25px"
+          src="../public/images/copy.png"
+        />
+      </button>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+    </h5></a>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="class col-md-6" style="padding: 20px">
+          <div class="card" id="mobCard">
+            <img
+              style="height: 70px; width: 70px; display: block; margin: 0 auto"
+              src="https://img.icons8.com/material/70/000000/user-male-circle--v1.png"
+            />
+            <% if (records != null){ %>
+            <div class="card-body">
+              <h5
+                class="card-title"
+                style="text-align: center; margin-top: -10px"
+              >
+              <%= records.name %>
+              </h5>
+              <div >
+                  <% if(records.instagram != ''){ %>
+                <img
+                  style="margin: 0 4px"
+                  src="https://img.icons8.com/ios/30/000000/instagram-new--v1.png"
+                />
+                <% } %>
+                <% if(records.facebook != ''){ %>
+                <img
+                  style="margin: 0 4px"
+                  src="https://img.icons8.com/ios/30/000000/facebook.png"
+                />
+                <% } %>
+                <% if(records.linkedin != ''){ %>
+                <img
+                  style="margin: 0 4px"
+                  src="https://img.icons8.com/ios/30/000000/linkedin.png"
+                />
+                <% } %>
+                <% if(records.email != ''){ %>
+                <img
+                  style="margin: 0 4px"
+                  src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/35/000000/external-email-interface-kiranshastry-lineal-kiranshastry-1.png"
+                />
+                <% } %>
+                <% if(records.twitter != ''){ %>
+                    <img style="margin: 0 4px" src="https://img.icons8.com/ios/30/000000/twitter.png"/>
+                  <% } %>
+
+                  <% if(records.github != ''){ %>
+                      <img style="margin: 0 4px"src="https://img.icons8.com/ios-glyphs/35/000000/github.png"/>
+                    <% } %>
+                    <% } %>
+              </div>
+              <div>
+                <% if (records) { if (records.links.length > 0) { for (var i = 0;
+                  i < records.links.length; i++) { %>
+                <button
+                  style="
+                    display: block;
+                    margin: 0 auto;
+                    width: 100%;
+                    border-radius: 40px;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                  "
+                  type="button"
+                  class="btn btn-dark"
+                ><%= records.links[i].linkTitle %>
+                </button>
+                <% }}} %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="class col-md-6" id="dashlink"
+        >
+          <div class="nav">
+            <h5 class="active">Links</h5>
+            <h5 class="nav">Themes</h5>
+            <h5 class="nav">Settings</h5>
+          </div>
+          <!-- <hr id="hr"> -->
+          <div class="profile" style="padding: 20px">
+            <h3 style="margin-bottom: 30px">
+              @<% if(loginUser != ''){ %><%= loginUser %><% }%>'s links
+            </h3>
+            <button
+              style="width: 70%; font-size: 20px"
+              data-toggle="modal"
+              data-target="#addLinkBox"
+              type="button"
+              class="btn btn-primary"
+            >
+              + Add Link
+            </button>
+            <div class="links" style="margin-top: 30px">
+              <% if (records) { if (records.links.length > 0) { for (var i = 0;
+              i < records.links.length; i++) {%>
+              <button type="button" id="addLink" class="btn btn-light">
+                <h4><%= records.links[i].linkTitle %></h4>
+                <p style="font-size: 16px; font-weight: normal">
+                  <%= records.links[i].link %>
+                </p>
+              </button>
+              <% }}} %>
+            </div>
+            <div class="social">
+              <h4
+                style="
+                  margin-bottom: 30px;
+                  margin-top: 20px;
+                  margin-bottom: 20px;
+                "
+              >
+                Socials
+              </h4>
+              <div >
+                <% if (records != null){ %>
+                <% if(records.instagram != ''){ %>
+                <button class="btn btn-light" style="border-radius: 50%;height: 45px;width: 45px;">                
+                  <img style="margin-left: -5px;margin-top: -1px;" src="https://img.icons8.com/ios/30/000000/instagram-new--v1.png"/>
+                </button>
+                <% }%>
+
+                <% if(records.facebook != ''){ %>
+                <button class="btn btn-light" style="border-radius: 50%;height: 45px;width: 45px;">                
+                  <img style="margin-left: -6px;margin-top: -1px;" src="https://img.icons8.com/ios/30/000000/facebook.png"/>
+                </button>
+                <% } %>
+
+                <% if(records.linkedin != ''){ %>
+                <button class="btn btn-light" style="border-radius: 50%;height: 45px;width: 45px;">                
+                  <img style="margin-left: -5px;margin-top: -1px;" src="https://img.icons8.com/ios/30/000000/linkedin.png"/>
+                </button>
+                <% } %>
+
+                <% if(records.email != ''){ %>
+                <button class="btn btn-light" style="border-radius: 50%;height: 45px;width: 45px;">                
+                  <img style="margin-left: -8px;margin-top: -2px;" src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/35/000000/external-email-interface-kiranshastry-lineal-kiranshastry-1.png"/>
+                </button>
+                <% } %>
+
+                <% if(records.twitter != ''){ %>
+                  <button class="btn btn-light" style="border-radius: 50%;height: 45px;width: 45px;">                
+                    <img style="margin-left: -5px;margin-top: -2px;" src="https://img.icons8.com/ios/30/000000/twitter.png"/>
+                  </button>
+                  <% } %>
+
+                  <% if(records.github != ''){ %>
+                    <button class="btn btn-light" style="border-radius: 50%;height: 45px;width: 45px;">                
+                      <img style="margin-left: -8px;margin-top: -2px;" src="https://img.icons8.com/ios-glyphs/35/000000/github.png"/>
+                    </button>
+                    <% } %>
+                    <% }%>
+
+                <button class="btn btn-light" data-toggle="modal" data-target="#addSocial" type="button"
+                class="btn btn-primary" style="border-radius: 50%;height: 45px;width: 45px;">                
+                  <img style="margin-left: -3px;margin-top: -5px;" src="https://img.icons8.com/android/24/000000/plus.png"/>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="addLinkBox"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="addLink"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header" style="border-bottom: none">
+            <h5 class="modal-title" id="exampleModalLongTitle">Add Link</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form method="POST" action="/addLink">
+            <div class="modal-body">
+              <div
+                class="form-group"
+                style="margin-top: 20px; margin-bottom: 20px"
+              >
+                <input
+                  type="text"
+                  name="linkTitle"
+                  class="form-control"
+                  style="background-color: rgba(13, 12, 34, 0.05)"
+                  placeholder="Link Title" required
+                />
+              </div>
+              <div
+                class="form-group"
+                style="margin-top: 20px; margin-bottom: 20px"
+              >
+                <input
+                  type="text"
+                  name="link"
+                  class="form-control"
+                  style="background-color: rgba(13, 12, 34, 0.05)"
+                  id="exampleInputPassword1"
+                  placeholder="Link" required
+                />
+              </div>
+            </div>
+            <div class="modal-footer" style="border-top: none">
+              <button style="width: 100%" type="submit" class="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div
+    class="modal fade"
+    id="addSocial"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="addLink"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="border-bottom: none">
+          <h5 class="modal-title" id="exampleModalLongTitle">Social Link</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form method="POST" action="/addLink">
+          <div class="modal-body">
+
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">
+                  <img src="https://img.icons8.com/ios/30/000000/instagram-new--v1.png"/>
+                </span>
+              </div>
+              <% if (records != null){ if(records.instagram != '') { %>
+                <input type="text" class="form-control" name="instagram" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" value=<%= records.instagram  %>>
+                <% }else{ %>
+                  <input type="text" class="form-control" name="instagram" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                  <% }} else { %>
+                    <input type="text" class="form-control" name="instagram" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                    <% } %>
+              
+            </div>
+            </div>
+
+            <div
+              class="form-group"
+              style="margin-top: 20px; margin-bottom: 20px">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">
+                  <img src="https://img.icons8.com/ios/30/000000/facebook.png"/>
+                </span>
+              </div>
+              <% if (records != null){ if(records.facebook != '') { %>
+                <input type="text" class="form-control" name="facebook" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" value=<%= records.facebook  %>>
+                <% }else{ %>
+                  <input type="text" class="form-control" name="facebook" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                  <% }} else { %>
+                    <input type="text" class="form-control" name="facebook" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                    <% } %>
+            </div>
+            </div>
+
+            <div
+            class="form-group"
+            style="margin-top: 20px; margin-bottom: 20px">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"><img src="https://img.icons8.com/ios/30/000000/linkedin.png"/></span>
+            </div>
+            <% if (records != null){ if(records.linkedin != '') { %>
+              <input type="text" class="form-control" name="linkedin" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" value=<%= records.linkedin  %>>
+              <% }else{ %>
+                <input type="text" class="form-control" name="linkedin" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                <% }} else { %>
+                  <input type="text" class="form-control" name="linkedin" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                  <% } %>
+          </div>
+          </div>
+
+          <div
+            class="form-group"
+            style="margin-top: 20px; margin-bottom: 20px">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">
+                <img src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/30/000000/external-email-interface-kiranshastry-lineal-kiranshastry-1.png"/>
+              </span>
+            </div>
+            <% if (records != null){ if(records.email != '') { %>
+              <input type="text" class="form-control" name="email" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" value=<%= records.email  %>>
+              <% }else{ %>
+                <input type="text" class="form-control" name="email" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                <% }} else { %>
+                  <input type="text" class="form-control" name="email" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                  <% } %>
+          </div>
+          </div>
+
+          <div
+          class="form-group"
+          style="margin-top: 20px; margin-bottom: 20px">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"><img src="https://img.icons8.com/ios-glyphs/30/000000/github.png"/></span>
+          </div>
+          <% if (records != null){ if(records.github != '') { %>
+            <input type="text" class="form-control" name="github" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" value=<%= records.github  %>>
+            <% }else{ %>
+              <input type="text" class="form-control" name="github" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+              <% }} else { %>
+                <input type="text" class="form-control" name="github" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                <% } %>
+        </div>
+        </div>
+
+        <div
+          class="form-group"
+          style="margin-top: 20px; margin-bottom: 20px">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"><img src="https://img.icons8.com/ios/30/000000/twitter.png"/></span>
+          </div>
+          <% if (records != null){ if(records.twitter != '') { %>
+            <input type="text" class="form-control" name="twitter" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" value=<%= records.twitter  %>>
+            <% }else{ %>
+              <input type="text" class="form-control" name="twitter" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+              <% }} else { %>
+                <input type="text" class="form-control" name="twitter" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                <% } %>
+        </div>
+        </div>
+
+          </div>
+          <div class="modal-footer" style="border-top: none">
+            <button style="width: 100%" type="submit" class="btn btn-primary">
+              Save changes
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../public/javascripts/script.js"></script>
+  </body>
+</html>

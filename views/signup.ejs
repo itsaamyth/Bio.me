@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio.Me</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href='../public/stylesheets/style.css'/>
+
+    <script src="https://kit.fontawesome.com/58b8e1a00a.js" crossorigin="anonymous"></script>
+</head>
+<body style="background-color: #f0f3f5;padding: 50px;">
+    <div class="container">
+        <div class="col-md-5" style="display: block;margin: 0 auto;">
+            <div class="card" style="border: none;" >
+                <div class="card-body" style="padding: 30px;">
+                    <h5>Signup</h5>
+                    <form action="/signup" method="POST">
+                        <div class="form-group" style="margin-top: 20px;margin-bottom: 20px;">
+                            <input type="name" name="name" class="form-control" aria-describedby="name" placeholder="Name">
+                          </div>
+                        <div class="form-group" style="margin-top: 20px;margin-bottom: 20px;">
+                          <input type="Username" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                        </div>
+                        <div class="form-group" style="position: relative;">
+                        <input type=text class="form-control" name="username"  placeholder="username" id="youridhere"/>
+                        <label for="youridhere"  class="static-value">bio.me/</label>
+                        </div>
+                        <!-- <div class="form-group" style="margin-top: 20px;margin-bottom: 20px;">
+                            <input type="Username" name="username" class="form-control" id="bio" aria-describedby="emailHelp" placeholder="username">
+                          </div> -->
+                        <div class="form-group" style="margin-top: 20px;margin-bottom: 20px;">
+                          <input type="Password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <button type="submit" style="width: 100%;font-size: 18px;" class="btn btn-primary">Signup with Email</button>
+                    </form>
+                        <p style="margin-top: 20px;text-align: center;">or</p>
+                        <form action="/auth/google" method="GET">
+                        <button type="submit" style="margin-top: 20px;width: 100%;" class="btn btn-outline-dark"><img src="https://img.icons8.com/color/25/000000/google-logo.png"/> Continue with Google</button>
+                        </form>
+                        <form action="/auth/facebook" method="GET">
+                        <button type="submit" style="margin-top: 20px;width: 100%;" class="btn btn-outline-dark"><img src="https://img.icons8.com/fluency/25/000000/facebook-new.png"/> Continue with Facebook</button>
+                        </form>
+                </div>
+            </div>
+            <div>
+                <p style="text-align: center;margin-top: 20px;">Already have an account ? <a href="/login" style="text-decoration: underline;color: #212529;">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
